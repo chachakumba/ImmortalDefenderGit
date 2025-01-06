@@ -1,0 +1,187 @@
+[gd_scene load_steps=24 format=3 uid="uid://bnxrh8moml6fr"]
+
+[ext_resource type="Script" path="res://Enemies/Scripts/EnemyMele.gd" id="1_hvgrm"]
+[ext_resource type="Texture2D" uid="uid://1tw48t2h74fm" path="res://Enemies/Sprites/DroneMele.png" id="2_faipm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lb4qd"]
+atlas = ExtResource("2_faipm")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qb6at"]
+atlas = ExtResource("2_faipm")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iv6dx"]
+atlas = ExtResource("2_faipm")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lhe2p"]
+atlas = ExtResource("2_faipm")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8g4s7"]
+atlas = ExtResource("2_faipm")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nyfnv"]
+atlas = ExtResource("2_faipm")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gr22p"]
+atlas = ExtResource("2_faipm")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tn4qp"]
+atlas = ExtResource("2_faipm")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wcdi5"]
+atlas = ExtResource("2_faipm")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0bgw1"]
+atlas = ExtResource("2_faipm")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_keg1g"]
+atlas = ExtResource("2_faipm")
+region = Rect2(320, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dxnmk"]
+atlas = ExtResource("2_faipm")
+region = Rect2(352, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8okjn"]
+atlas = ExtResource("2_faipm")
+region = Rect2(384, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7o0e4"]
+atlas = ExtResource("2_faipm")
+region = Rect2(416, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7e67s"]
+atlas = ExtResource("2_faipm")
+region = Rect2(448, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sbra3"]
+atlas = ExtResource("2_faipm")
+region = Rect2(480, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jrei5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lb4qd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qb6at")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iv6dx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lhe2p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8g4s7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nyfnv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gr22p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tn4qp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wcdi5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0bgw1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_keg1g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dxnmk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8okjn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7o0e4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7e67s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sbra3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]
+
+[sub_resource type="Curve" id="Curve_3uhwb"]
+max_value = 300.0
+_data = [Vector2(0, 0), 0.0, 12.9023, 0, 0, Vector2(1, 300), -27.4229, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_br356"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.13267, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_nqb82"]
+offsets = PackedFloat32Array(0.255061, 0.489879, 0.94332, 0.995951)
+colors = PackedColorArray(0.296875, 0.296875, 0.296875, 1, 0, 0, 0, 1, 1, 0.398438, 0, 1, 0.827451, 0.905882, 0.133333, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lqw6j"]
+radius = 12.0
+
+[node name="EnemyMele" type="CharacterBody2D"]
+script = ExtResource("1_hvgrm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_jrei5")
+frame_progress = 0.512066
+
+[node name="DamageParticles" type="CPUParticles2D" parent="AnimatedSprite2D"]
+position = Vector2(8, 0)
+emitting = false
+amount = 30
+lifetime = 0.3
+one_shot = true
+explosiveness = 0.75
+direction = Vector2(-1, 0)
+spread = 75.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 300.0
+damping_min = 10.0
+damping_max = 30.0
+damping_curve = SubResource("Curve_3uhwb")
+scale_amount_min = 0.5
+scale_amount_curve = SubResource("Curve_br356")
+color_initial_ramp = SubResource("Gradient_nqb82")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_lqw6j")
+
+[node name="DeathParticles" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 60
+lifetime = 0.3
+one_shot = true
+explosiveness = 0.75
+direction = Vector2(-1, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 300.0
+damping_min = 10.0
+damping_max = 30.0
+damping_curve = SubResource("Curve_3uhwb")
+scale_amount_max = 10.0
+scale_amount_curve = SubResource("Curve_br356")
+color_initial_ramp = SubResource("Gradient_nqb82")

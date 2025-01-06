@@ -1,0 +1,119 @@
+[gd_scene load_steps=20 format=3 uid="uid://c0mpqwbsqvgl4"]
+
+[ext_resource type="Script" path="res://Player/Scripts/Player.gd" id="1_jv21j"]
+[ext_resource type="Texture2D" uid="uid://ds0rnmjsyuf3n" path="res://Player/Sprites/RobotNew.png" id="1_uedly"]
+[ext_resource type="Script" path="res://Player/PlayerMovement.gd" id="2_g0wth"]
+[ext_resource type="Script" path="res://Scripts/Trail2D.gd" id="6_yqbtd"]
+[ext_resource type="PackedScene" uid="uid://kesgjacfq2t8" path="res://Scenes/ui.tscn" id="7_s7uqq"]
+[ext_resource type="Script" path="res://Player/Scripts/AnimationManager.gd" id="7_tedc2"]
+[ext_resource type="Script" path="res://Player/Scripts/DirectionManager.gd" id="8_hqfhw"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qxq4n"]
+radius = 16.0
+height = 76.0
+
+[sub_resource type="Curve" id="Curve_f042p"]
+max_value = 300.0
+_data = [Vector2(0, 0), 0.0, 12.9023, 0, 0, Vector2(1, 300), -27.4229, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_txhkw"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.13267, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_6pgp7"]
+offsets = PackedFloat32Array(0.0283401, 0.226721, 0.554656, 0.793522, 1)
+colors = PackedColorArray(0.296875, 0.296875, 0.296875, 1, 0, 0, 0, 1, 0.828125, 0.409741, 0.132629, 1, 1, 0.398438, 0, 1, 1, 1, 0, 1)
+
+[sub_resource type="Animation" id="Animation_kgygf"]
+resource_name = "Enable"
+
+[sub_resource type="Animation" id="Animation_yc8x5"]
+resource_name = "Hurt"
+
+[sub_resource type="Animation" id="Animation_gsuii"]
+resource_name = "Idle"
+
+[sub_resource type="Animation" id="Animation_d1ut4"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_hm82c"]
+resource_name = "Shutdown"
+
+[sub_resource type="Animation" id="Animation_hdb8j"]
+resource_name = "Walk"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kydq3"]
+_data = {
+"Enable": SubResource("Animation_kgygf"),
+"Hurt": SubResource("Animation_yc8x5"),
+"Idle": SubResource("Animation_gsuii"),
+"RESET": SubResource("Animation_d1ut4"),
+"Shutdown": SubResource("Animation_hm82c"),
+"Walk": SubResource("Animation_hdb8j")
+}
+
+[sub_resource type="Curve" id="Curve_1ca4n"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("ui")]
+script = ExtResource("1_jv21j")
+ui = NodePath("UI")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_qxq4n")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -26)
+texture = ExtResource("1_uedly")
+hframes = 8
+vframes = 9
+
+[node name="DamageParticles" type="CPUParticles2D" parent="Sprite2D"]
+position = Vector2(6, 8)
+emitting = false
+amount = 30
+lifetime = 0.3
+one_shot = true
+explosiveness = 0.75
+direction = Vector2(-1, 0)
+spread = 75.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 300.0
+damping_min = 10.0
+damping_max = 30.0
+damping_curve = SubResource("Curve_f042p")
+scale_amount_min = 0.5
+scale_amount_curve = SubResource("Curve_txhkw")
+color_initial_ramp = SubResource("Gradient_6pgp7")
+
+[node name="Movement" type="Node2D" parent="." node_paths=PackedStringArray("player_root")]
+script = ExtResource("2_g0wth")
+player_root = NodePath("..")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../AnimationTree")
+libraries = {
+"": SubResource("AnimationLibrary_kydq3")
+}
+autoplay = "Enable"
+
+[node name="AnimationManager" type="Node" parent="."]
+script = ExtResource("7_tedc2")
+
+[node name="DirectionManager" type="Node" parent="."]
+script = ExtResource("8_hqfhw")
+
+[node name="Trail" type="Line2D" parent="."]
+show_behind_parent = true
+width_curve = SubResource("Curve_1ca4n")
+joint_mode = 2
+script = ExtResource("6_yqbtd")
+
+[node name="UI" parent="." instance=ExtResource("7_s7uqq")]

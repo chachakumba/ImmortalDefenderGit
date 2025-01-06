@@ -1,0 +1,63 @@
+[gd_scene load_steps=8 format=3 uid="uid://kesgjacfq2t8"]
+
+[ext_resource type="Script" path="res://Scripts/PlayerUi.gd" id="1_48wb0"]
+[ext_resource type="Texture2D" uid="uid://cng1v5yr5sxfe" path="res://Sprites/battery.png" id="2_6q0lq"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_vy2gc"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_wge66"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_h6xmw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hn4e4"]
+content_margin_left = 80.0
+content_margin_top = 0.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3s151"]
+bg_color = Color(0.894118, 0.898039, 0.32549, 1)
+
+[node name="UI" type="Control" node_paths=PackedStringArray("charge_slider")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_48wb0")
+charge_slider = NodePath("VSlider")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VSlider" type="VSlider" parent="."]
+layout_mode = 2
+offset_left = 58.0
+offset_top = 44.0
+offset_right = 138.0
+offset_bottom = 184.0
+theme_override_icons/grabber = SubResource("ImageTexture_vy2gc")
+theme_override_icons/grabber_highlight = SubResource("ImageTexture_wge66")
+theme_override_icons/grabber_disabled = SubResource("ImageTexture_h6xmw")
+theme_override_styles/slider = SubResource("StyleBoxFlat_hn4e4")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_3s151")
+max_value = 1.0
+step = 0.001
+editable = false
+scrollable = false
+
+[node name="Battery" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 26.0
+offset_right = 163.0
+offset_bottom = 194.0
+texture = ExtResource("2_6q0lq")
