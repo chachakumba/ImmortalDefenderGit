@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bpp2evoo1ff7m"
+path="res://.godot/imported/Industrial Nightlife Intensity 2.wav-dc3514144159b209501421ea522ffcf2.sample"
+
+[deps]
+
+source_file="res://Music/InLevel/Industrial Nightlife Intensity 2.wav"
+dest_files=["res://.godot/imported/Industrial Nightlife Intensity 2.wav-dc3514144159b209501421ea522ffcf2.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

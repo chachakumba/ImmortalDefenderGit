@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c3vblorduoqry"
+path="res://.godot/imported/Industrial Mineshaft Intensity 1.wav-e2afb03b05a8d2d2ac67f38cd4a49bff.sample"
+
+[deps]
+
+source_file="res://Music/InLevel/Industrial Mineshaft Intensity 1.wav"
+dest_files=["res://.godot/imported/Industrial Mineshaft Intensity 1.wav-e2afb03b05a8d2d2ac67f38cd4a49bff.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
