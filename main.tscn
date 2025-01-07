@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dct46k8r1tfng"]
+[gd_scene load_steps=8 format=3 uid="uid://dct46k8r1tfng"]
 
 [ext_resource type="PackedScene" uid="uid://c0mpqwbsqvgl4" path="res://Player/player.tscn" id="1_d84an"]
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_wmo62"]
 [ext_resource type="Script" path="res://Scripts/EnemySpawner.gd" id="3_b30cr"]
 [ext_resource type="PackedScene" uid="uid://bnxrh8moml6fr" path="res://Enemies/Scenes/enemy_mele.tscn" id="4_lb2hu"]
+[ext_resource type="PackedScene" uid="uid://dlvo7f47l6hem" path="res://Enemies/Scenes/enemy_ranged.tscn" id="5_tfmsk"]
 
 [sub_resource type="Gradient" id="Gradient_q8y6j"]
 
@@ -21,13 +22,16 @@ texture = SubResource("GradientTexture2D_ouame")
 
 [node name="Player" parent="." instance=ExtResource("1_d84an")]
 
-[node name="EnemySpawner" type="Node2D" parent="." node_paths=PackedStringArray("player", "enemies_parent", "batteries_parent")]
+[node name="EnemySpawner" type="Node2D" parent="." node_paths=PackedStringArray("player", "enemies_parent", "batteries_parent", "projectiles_parent")]
 script = ExtResource("3_b30cr")
 player = NodePath("../Player")
-enemies_prefabs = Array[PackedScene]([ExtResource("4_lb2hu")])
+enemies_prefabs = Array[PackedScene]([ExtResource("4_lb2hu"), ExtResource("5_tfmsk")])
 enemies_parent = NodePath("Enemies")
 batteries_parent = NodePath("Batteries")
+projectiles_parent = NodePath("Projectiles")
 
 [node name="Enemies" type="Node2D" parent="EnemySpawner"]
+
+[node name="Projectiles" type="Node2D" parent="EnemySpawner"]
 
 [node name="Batteries" type="Node2D" parent="EnemySpawner"]

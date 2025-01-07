@@ -1,8 +1,11 @@
-[gd_scene load_steps=25 format=3 uid="uid://bnxrh8moml6fr"]
+[gd_scene load_steps=30 format=3 uid="uid://bnxrh8moml6fr"]
 
 [ext_resource type="Script" path="res://Enemies/Scripts/EnemyMele.gd" id="1_hvgrm"]
 [ext_resource type="PackedScene" uid="uid://b8x0s7hp0xi1o" path="res://Scenes/battery.tscn" id="2_5ugis"]
 [ext_resource type="Texture2D" uid="uid://1tw48t2h74fm" path="res://Enemies/Sprites/DroneMele.png" id="2_faipm"]
+[ext_resource type="Shader" path="res://Enemies/Scenes/enemy_mele_attack_zone.gdshader" id="4_nu0pl"]
+[ext_resource type="Texture2D" uid="uid://bjw3cv5f4vtht" path="res://Sprites/circle_fill_fade_edge.jpg" id="5_jkw3k"]
+[ext_resource type="Texture2D" uid="uid://dbc48w7x01am5" path="res://Sprites/circle256.png" id="6_u6m6s"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lb4qd"]
 atlas = ExtResource("2_faipm")
@@ -140,11 +143,21 @@ colors = PackedColorArray(0.296875, 0.296875, 0.296875, 1, 0, 0, 0, 1, 1, 0.3984
 [sub_resource type="CircleShape2D" id="CircleShape2D_lqw6j"]
 radius = 12.0
 
-[node name="EnemyMele" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_hvhfj"]
+radius = 30.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0g4cv"]
+shader = ExtResource("4_nu0pl")
+shader_parameter/color = Vector3(1, 1, 0)
+shader_parameter/alpha_multiplier = 1.0
+shader_parameter/bwtexture = ExtResource("5_jkw3k")
+
+[node name="EnemyMele" type="CharacterBody2D" node_paths=PackedStringArray("attack_visual", "sprite")]
 scale = Vector2(2, 2)
 collision_layer = 5
 collision_mask = 5
 script = ExtResource("1_hvgrm")
+attack_visual = NodePath("AttackVisuals")
 attack_radius = 30.0
 attack_cooldown = 1.0
 sprite = NodePath("AnimatedSprite2D")
@@ -155,7 +168,7 @@ battery_scene = ExtResource("2_5ugis")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_jrei5")
-frame_progress = 0.512066
+frame_progress = 0.0857405
 
 [node name="DamageParticles" type="CPUParticles2D" parent="AnimatedSprite2D"]
 position = Vector2(8, 0)
@@ -179,6 +192,12 @@ color_initial_ramp = SubResource("Gradient_nqb82")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_lqw6j")
 
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_hvhfj")
+disabled = true
+debug_color = Color(0.60094, 0.543109, 5.77569e-07, 0.42)
+
 [node name="DeathParticles" type="CPUParticles2D" parent="."]
 emitting = false
 amount = 60
@@ -196,3 +215,9 @@ damping_curve = SubResource("Curve_3uhwb")
 scale_amount_max = 10.0
 scale_amount_curve = SubResource("Curve_br356")
 color_initial_ramp = SubResource("Gradient_nqb82")
+
+[node name="AttackVisuals" type="Sprite2D" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_0g4cv")
+scale = Vector2(0.238281, 0.238281)
+texture = ExtResource("6_u6m6s")

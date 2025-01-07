@@ -6,6 +6,7 @@ class_name EnemySpawner
 @export var enemies_prefabs : Array[PackedScene]
 @export var enemies_parent : Node2D
 @export var batteries_parent : Node2D
+@export var projectiles_parent : Node2D
 
 var spawnpoints : Array[Vector2] = [Vector2(650,0),Vector2(-650,0),Vector2(0,350),Vector2(0,-350),
 Vector2(650,350),Vector2(-650,350),Vector2(650,-350),Vector2(-650,-350),
@@ -31,5 +32,5 @@ func _process(delta):
 func _spawn():
 	var spawned_enemy : Enemy = enemies_prefabs.pick_random().instantiate()
 	enemies_parent.add_child(spawned_enemy)
-	spawned_enemy.battery_parent = batteries_parent
+	spawned_enemy.spawner = self
 	spawned_enemy.global_position = player.global_position + spawnpoints.pick_random()

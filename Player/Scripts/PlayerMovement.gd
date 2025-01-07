@@ -11,6 +11,8 @@ var move_multiplier : float = 1
 
 @export var sprite : AnimatedSprite2D
 
+var inverter : Vector2i = Vector2i(1,1)
+
 func _physics_process(_delta):
 	if Input.is_action_just_pressed("Up"):
 		_delayed_movement(0,-1)
@@ -35,7 +37,10 @@ func _physics_process(_delta):
 	if Input.is_action_just_pressed("DeductMoveDelay"):
 		move_delay = clampf(move_delay - 0.5, 0, 1000)
 	
-	player_root.velocity = move_vector * speed * move_multiplier
+	var modified_movement : Vector2 = move_vector
+	modified_movement.x *= inverter.x
+	modified_movement.y *= inverter.y
+	player_root.velocity = modified_movement * speed * move_multiplier
 	player_root.move_and_slide()
 
 func _delayed_movement(x : int = 0, y : int = 0):

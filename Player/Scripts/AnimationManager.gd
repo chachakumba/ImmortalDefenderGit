@@ -8,7 +8,7 @@ class_name AnimationManager
 
 var cur_anim : AnimState = AnimState.Enabling
 
-func  _process(_delta):
+func _process(_delta):
 	pass
 
 
