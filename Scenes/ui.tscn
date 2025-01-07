@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://kesgjacfq2t8"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerUi.gd" id="1_48wb0"]
-[ext_resource type="Texture2D" uid="uid://cng1v5yr5sxfe" path="res://Sprites/battery.png" id="2_6q0lq"]
+[ext_resource type="Texture2D" uid="uid://bhp8738fwnam4" path="res://Sprites/battery_no_ligtning.png" id="2_f5c34"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_vy2gc"]
 
@@ -60,4 +60,4 @@ offset_left = 31.0
 offset_top = 26.0
 offset_right = 163.0
 offset_bottom = 194.0
-texture = ExtResource("2_6q0lq")
+texture = ExtResource("2_f5c34")

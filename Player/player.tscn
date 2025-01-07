@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c0mpqwbsqvgl4"]
+[gd_scene load_steps=22 format=3 uid="uid://c0mpqwbsqvgl4"]
 
 [ext_resource type="Script" path="res://Player/Scripts/Player.gd" id="1_jv21j"]
 [ext_resource type="Texture2D" uid="uid://ds0rnmjsyuf3n" path="res://Player/Sprites/RobotNew.png" id="1_uedly"]
@@ -7,10 +7,12 @@
 [ext_resource type="PackedScene" uid="uid://kesgjacfq2t8" path="res://Scenes/ui.tscn" id="7_s7uqq"]
 [ext_resource type="Script" path="res://Player/Scripts/AnimationManager.gd" id="7_tedc2"]
 [ext_resource type="Script" path="res://Player/Scripts/DirectionManager.gd" id="8_hqfhw"]
+[ext_resource type="Script" path="res://Player/Scripts/Looker.gd" id="8_pan1e"]
+[ext_resource type="Texture2D" uid="uid://dvmhx1rcjmvn7" path="res://Sprites/square256.png" id="9_8rjqu"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qxq4n"]
 radius = 16.0
-height = 76.0
+height = 75.0
 
 [sub_resource type="Curve" id="Curve_f042p"]
 max_value = 300.0
@@ -58,6 +60,8 @@ _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("ui")]
+collision_layer = 2
+collision_mask = 0
 script = ExtResource("1_jv21j")
 ui = NodePath("UI")
 
@@ -117,3 +121,21 @@ joint_mode = 2
 script = ExtResource("6_yqbtd")
 
 [node name="UI" parent="." instance=ExtResource("7_s7uqq")]
+offset_left = -575.0
+offset_top = -322.0
+offset_right = -575.0
+offset_bottom = -322.0
+
+[node name="Looker" type="Node2D" parent="."]
+script = ExtResource("8_pan1e")
+
+[node name="Sprite2D" type="Sprite2D" parent="Looker"]
+position = Vector2(41, 0)
+scale = Vector2(0.0177778, 0.0622222)
+texture = ExtResource("9_8rjqu")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Looker"]
+position = Vector2(48, 0)
+rotation = 0.785397
+scale = Vector2(0.044, 0.044)
+texture = ExtResource("9_8rjqu")

@@ -1,6 +1,7 @@
-[gd_scene load_steps=24 format=3 uid="uid://bnxrh8moml6fr"]
+[gd_scene load_steps=25 format=3 uid="uid://bnxrh8moml6fr"]
 
 [ext_resource type="Script" path="res://Enemies/Scripts/EnemyMele.gd" id="1_hvgrm"]
+[ext_resource type="PackedScene" uid="uid://b8x0s7hp0xi1o" path="res://Scenes/battery.tscn" id="2_5ugis"]
 [ext_resource type="Texture2D" uid="uid://1tw48t2h74fm" path="res://Enemies/Sprites/DroneMele.png" id="2_faipm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lb4qd"]
@@ -139,8 +140,18 @@ colors = PackedColorArray(0.296875, 0.296875, 0.296875, 1, 0, 0, 0, 1, 1, 0.3984
 [sub_resource type="CircleShape2D" id="CircleShape2D_lqw6j"]
 radius = 12.0
 
-[node name="EnemyMele" type="CharacterBody2D"]
+[node name="EnemyMele" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
+scale = Vector2(2, 2)
+collision_layer = 5
+collision_mask = 5
 script = ExtResource("1_hvgrm")
+attack_radius = 30.0
+attack_cooldown = 1.0
+sprite = NodePath("AnimatedSprite2D")
+health = 50.0
+damage = 10.0
+battery_charge = 15.0
+battery_scene = ExtResource("2_5ugis")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_jrei5")

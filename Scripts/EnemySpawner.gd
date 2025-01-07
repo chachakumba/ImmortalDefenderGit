@@ -13,7 +13,7 @@ Vector2(325,350),Vector2(-325,350),Vector2(325,-350),Vector2(-325,-350),
 Vector2(650,175),Vector2(-650,175),Vector2(650,-175),Vector2(-650,-175),
 ]
 
-var is_running : bool = false
+var is_running : bool = true
 
 var time_to_spawn : float = 0
 @export var spawn_delay : float = 3
@@ -30,5 +30,6 @@ func _process(delta):
 
 func _spawn():
 	var spawned_enemy : Enemy = enemies_prefabs.pick_random().instantiate()
+	enemies_parent.add_child(spawned_enemy)
 	spawned_enemy.battery_parent = batteries_parent
 	spawned_enemy.global_position = player.global_position + spawnpoints.pick_random()

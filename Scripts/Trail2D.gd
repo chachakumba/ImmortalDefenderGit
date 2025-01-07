@@ -4,7 +4,7 @@ class_name Trail2D
 @export var length : float = 50
 var point : Vector2
 
-func _process(delta):
+func _process(_delta):
 	global_position = Vector2.ZERO
 	global_rotation = 0
 	

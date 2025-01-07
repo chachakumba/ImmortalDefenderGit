@@ -14,6 +14,7 @@ func _init():
 	Instance = self
 
 func _get_damage(amount : float):
+	print("Got ", amount, " damage")
 	charge -= amount
 	if charge <= min_charge:
 		_shutdown()
@@ -30,3 +31,4 @@ func _process(delta):
 
 func _shutdown():
 	printerr("Shutting down")
+	charge = max_charge #TODO: remove in release

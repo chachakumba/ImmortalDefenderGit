@@ -11,7 +11,7 @@ var move_multiplier : float = 1
 
 @export var sprite : AnimatedSprite2D
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if Input.is_action_just_pressed("Up"):
 		_delayed_movement(0,-1)
 	if Input.is_action_just_pressed("Down"):

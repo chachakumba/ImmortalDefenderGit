@@ -1,6 +1,6 @@
 extends Enemy
 
-@export var speed : float = 300.0
+@export var speed : float = 100.0
 @export var speed_refresh : float = 30.0
 var current_speed : float
 
@@ -11,8 +11,10 @@ var cooldown : float = 0
 @export var selfstun : float = 0.5
 var stun : float = 0
 
+@export var sprite : Node2D
+
 func _init():
-	on_damage.connect(_slow_down())
+	on_damage.connect(_slow_down)
 
 func _physics_process(delta):
 	current_speed = clampf(current_speed + speed_refresh, 0, speed)
@@ -31,12 +33,18 @@ func _physics_process(delta):
 		return
 	
 	velocity = direction * speed
+	if direction.x < 0:
+		sprite.scale.x = -1
+	else:
+		sprite.scale.x = 1
+
 	move_and_slide()
 
 func _slow_down():
 	current_speed /= 2
 
 func _attack():
+	print("Attacking")
 	player._get_damage(damage)
 	stun = selfstun
 	cooldown = attack_cooldown

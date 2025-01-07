@@ -1,12 +1,17 @@
 extends Node
 class_name Battery
 
-@export var attrackt_distance : float
+@export var attract_distance : float
 
-var added_charge : float = 0
+var charge : float = 0
 
 func _set_charge(amount : float):
-	added_charge = amount
+	charge = amount
 
 func _pick_up():
-	Player.Instance.charge(added_charge)
+	Player.Instance._charge(charge)
+	queue_free()
+
+func _on_player_enter(player : Node2D):
+	if player.name == "player":
+		_pick_up()
