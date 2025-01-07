@@ -69,6 +69,7 @@ ui = NodePath("UI")
 shape = SubResource("CapsuleShape2D_qxq4n")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+light_mask = 65
 position = Vector2(0, -26)
 texture = ExtResource("1_uedly")
 hframes = 8
@@ -137,3 +138,9 @@ position = Vector2(48, 0)
 rotation = 0.785397
 scale = Vector2(0.044, 0.044)
 texture = ExtResource("9_8rjqu")
+
+[node name="StepSounds" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
+
+[node name="AttackSounds" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"

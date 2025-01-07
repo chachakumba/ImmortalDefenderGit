@@ -1,9 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://kesgjacfq2t8"]
+[gd_scene load_steps=11 format=3 uid="uid://kesgjacfq2t8"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerUi.gd" id="1_48wb0"]
 [ext_resource type="Texture2D" uid="uid://bhp8738fwnam4" path="res://Sprites/battery_no_ligtning.png" id="2_f5c34"]
 [ext_resource type="Shader" path="res://Scenes/overlay.gdshader" id="3_3my8q"]
-[ext_resource type="Texture2D" uid="uid://cv5jvj6d1m5fg" path="res://icon.svg" id="4_agmmw"]
 [ext_resource type="Texture2D" uid="uid://dvmhx1rcjmvn7" path="res://Sprites/square256.png" id="5_d2v4m"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_vy2gc"]
@@ -21,7 +20,8 @@ bg_color = Color(0.894118, 0.898039, 0.32549, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_exbfg"]
 shader = ExtResource("3_3my8q")
-shader_parameter/sample = ExtResource("4_agmmw")
+shader_parameter/fisheye_strength = 0.75
+shader_parameter/rgb_mult = Vector3(1, 1, 1)
 
 [node name="UI" type="Control" node_paths=PackedStringArray("charge_slider")]
 layout_mode = 3

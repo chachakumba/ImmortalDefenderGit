@@ -30,6 +30,7 @@ enabled=PackedStringArray("res://addons/timer/plugin.cfg")
 [file_customization]
 
 folder_colors={
+"res://Enemies/": "red",
 "res://Player/": "blue",
 "res://addons/": "orange"
 }
@@ -66,14 +67,27 @@ DeductMoveDelay={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":91,"key_label":0,"unicode":91,"echo":false,"script":null)
 ]
 }
+IncreasceIntensity={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":80,"key_label":0,"unicode":112,"echo":false,"script":null)
+]
+}
 
 [layer_names]
 
+2d_render/layer_1="Default"
+2d_render/layer_2="Background"
+2d_render/layer_3="Objects"
+2d_render/layer_4="EnemiesMele"
+2d_render/layer_5="EnemiesRanged"
+2d_render/layer_6="Projectiles"
+2d_render/layer_7="Player"
 2d_physics/layer_1="Default"
 2d_physics/layer_2="Player"
 2d_physics/layer_3="Enemies"
 2d_physics/layer_4="PlayerProjectiles"
 2d_physics/layer_5="EnemyProjectiles"
+2d_physics/layer_6="RangedEnemies"
 
 [rendering]
 

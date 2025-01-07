@@ -111,6 +111,8 @@ shader_parameter/alpha_multiplier = 0.1
 shader_parameter/bwtexture = ExtResource("3_ll04r")
 
 [node name="EnemyRanged" type="CharacterBody2D" node_paths=PackedStringArray("projectile_spawn", "sprite")]
+collision_layer = 32
+collision_mask = 36
 script = ExtResource("1_i1xv1")
 projectile_scene = ExtResource("2_2criu")
 projectile_spawn = NodePath("AnimatedSprite2D/ProjectileSpawn")
@@ -123,6 +125,8 @@ battery_charge = 20.0
 battery_scene = ExtResource("2_s5qtr")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visibility_layer = 16
+y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_naran")
 frame_progress = 0.372484
 
