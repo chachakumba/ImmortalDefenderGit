@@ -32,6 +32,7 @@ enabled=PackedStringArray("res://addons/timer/plugin.cfg")
 folder_colors={
 "res://Enemies/": "red",
 "res://Player/": "blue",
+"res://PowerUps/": "yellow",
 "res://addons/": "orange"
 }
 

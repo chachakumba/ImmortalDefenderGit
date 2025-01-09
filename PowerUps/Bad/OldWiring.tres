@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PwUOldWiring" load_steps=2 format=3 uid="uid://bd8o0qgdj2uvv"]
+
+[ext_resource type="Script" path="res://PowerUps/Bad/OldWiringRes.gd" id="1_4ekig"]
+
+[resource]
+script = ExtResource("1_4ekig")
+amount = 0.25
+name = ""
+description = ""
+amount_in_pool = 1

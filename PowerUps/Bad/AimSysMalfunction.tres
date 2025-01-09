@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="PwUAimSystemMalfunction" load_steps=2 format=3 uid="uid://5aol68ty25g7"]
+
+[ext_resource type="Script" path="res://PowerUps/Bad/AimSysMalfunctionRes.gd" id="1_e5i02"]
+
+[resource]
+script = ExtResource("1_e5i02")
+name = ""
+description = ""
+amount_in_pool = 1

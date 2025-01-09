@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="PwUCircuitInterfierence" load_steps=2 format=3 uid="uid://ss85aokndeub"]
+
+[ext_resource type="Script" path="res://PowerUps/Bad/CircuitInterfierenceRes.gd" id="1_eha6m"]
+
+[resource]
+script = ExtResource("1_eha6m")
+name = ""
+description = ""
+amount_in_pool = 1

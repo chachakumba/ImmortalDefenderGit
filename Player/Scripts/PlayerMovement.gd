@@ -9,9 +9,12 @@ var move_vector : Vector2i = Vector2i.ZERO
 @export var move_delay : float = 0
 var move_multiplier : float = 1
 
-@export var sprite : AnimatedSprite2D
+#@export var sprite : AnimatedSprite2D
 
 var inverter : Vector2i = Vector2i(1,1)
+
+func _ready():
+	Player.Instance.on_state_change.connect(_react_to_new_state)
 
 func _physics_process(_delta):
 	if Input.is_action_just_pressed("Up"):
@@ -37,10 +40,17 @@ func _physics_process(_delta):
 	if Input.is_action_just_pressed("DeductMoveDelay"):
 		move_delay = clampf(move_delay - 0.5, 0, 1000)
 	
-	var modified_movement : Vector2 = move_vector
+	var modified_movement : Vector2 = move_vector * speed * move_multiplier
 	modified_movement.x *= inverter.x
 	modified_movement.y *= inverter.y
-	player_root.velocity = modified_movement * speed * move_multiplier
+	
+	if Player.Instance.state == Player.State.Walk && modified_movement == Vector2.ZERO:
+		Player.Instance._change_state(Player.State.Idle)
+	
+	if Player.Instance.state == Player.State.Idle && modified_movement != Vector2.ZERO:
+		Player.Instance._change_state(Player.State.Walk)
+		
+	player_root.velocity = modified_movement
 	player_root.move_and_slide()
 
 func _delayed_movement(x : int = 0, y : int = 0):
@@ -54,3 +64,12 @@ func _delayed_movement(x : int = 0, y : int = 0):
 func _change_movement_direction(x : int = 0, y: int = 0):
 	move_vector.x += x
 	move_vector.y += y
+
+func _react_to_new_state(state : Player.State):
+	if state != Player.State.Idle && state != Player.State.Walk:
+		move_multiplier = 0
+	else:
+		move_multiplier = 1
+
+func _add_delay(amount : float):
+	move_delay += amount

@@ -3,6 +3,8 @@ shader_type canvas_item;
 uniform sampler2D screen_texture : hint_screen_texture, repeat_disable, filter_nearest;
 uniform float fisheye_strength = 1.0; // Adjust this to control the fisheye effect strength
 uniform vec3 rgb_mult = vec3(1.);
+uniform bool use_fisheye = false;
+uniform bool use_crt = false;
 
 vec2 fisheye(vec2 uv) {
     vec2 d = uv - 0.5;
@@ -27,13 +29,16 @@ void fragment() {
     vec2 iResolution = 1.0 / SCREEN_PIXEL_SIZE;
     vec2 q = FRAGCOORD.xy / iResolution.xy;
 
+	vec2 uv = q;
     // Apply fisheye distortion
-    q = fisheye(q);
+	if (use_fisheye){
+    	q = fisheye(q);
+    	uv = curve(q);
+    	uv = curve( uv );
+	}
 
-    vec2 uv = curve(q);
-    uv = curve( uv );
-    vec3 oricol = texture( screen_texture, vec2(q.x,q.y) ).xyz;
     vec3 col;
+    vec3 oricol = texture( screen_texture, vec2(q.x,q.y) ).xyz;
 	float x =  sin(0.3*TIME+uv.y*21.0)*sin(0.7*TIME+uv.y*29.0)*sin(0.3+0.33*TIME+uv.y*31.0)*0.0017;
 
     col.r = texture(screen_texture,vec2(x+uv.x+0.001,uv.y+0.001)).x+0.05;
@@ -65,7 +70,10 @@ void fragment() {
 	col*=1.0-0.65*vec3(clamp((mod(FRAGCOORD.x, 2.0)-1.0)*2.0,0.0,1.0));
 
     float comp = smoothstep( 0.1, 0.9, sin(TIME) );
-
+	
+	if (!use_crt){
+		col = oricol;
+	}
 	if (rgb_mult.r + rgb_mult.g + rgb_mult.b == 0.){
 		col.rgb = vec3((col.r + col.g + col.b)/3.);
 	}else{

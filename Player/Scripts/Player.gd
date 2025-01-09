@@ -10,8 +10,20 @@ static var Instance : Player
 @export var max_charge : float = 100
 @export var min_charge : float = -1
 
+var pos_powerup_pool : Array[Powerup]
+var neg_powerup_pool : Array[Powerup]
+
+var state : State
+signal on_state_change(new_state : State)
+
+@export var movement : PlayerMovement
+@export var looker : Looker
+
 func _init():
 	Instance = self
+
+func _ready():
+	_change_state(State.Enabling)
 
 func _get_damage(amount : float):
 	print("Got ", amount, " damage")
@@ -32,3 +44,29 @@ func _process(delta):
 func _shutdown():
 	printerr("Shutting down")
 	charge = max_charge #TODO: remove in release
+
+func _change_state(new_state : State):
+	state = new_state
+	on_state_change.emit(new_state)
+
+func _add_pos_powerup(powerup : Powerup):
+	pos_powerup_pool.append(powerup)
+func _add_neg_powerup(powerup : Powerup):
+	neg_powerup_pool.append(powerup)
+func _remove_pos_powerup(powerup : Powerup):
+	pos_powerup_pool.erase(powerup)
+func _remove_neg_powerup(powerup : Powerup):
+	neg_powerup_pool.erase(powerup)
+
+enum State{
+	Null,
+	Enabling,
+	Walk,
+	Shutdown,
+	Hurt,
+	Idle,
+	Attack1,
+	Attack2,
+	Shoot1,
+	Shoot2
+}

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="PwUDriverBug" load_steps=2 format=3 uid="uid://dthi8ps7faufk"]
+
+[ext_resource type="Script" path="res://PowerUps/Bad/DriverBugRes.gd" id="1_dhrsq"]
+
+[resource]
+script = ExtResource("1_dhrsq")
+name = ""
+description = ""

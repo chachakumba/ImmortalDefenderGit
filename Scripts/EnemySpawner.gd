@@ -14,7 +14,7 @@ Vector2(325,350),Vector2(-325,350),Vector2(325,-350),Vector2(-325,-350),
 Vector2(650,175),Vector2(-650,175),Vector2(650,-175),Vector2(-650,-175),
 ]
 
-var is_running : bool = true
+@export var is_running : bool = false
 
 var time_to_spawn : float = 0
 @export var spawn_delay : float = 3

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="PwULenseMalfunction" load_steps=2 format=3 uid="uid://g54xfjaibuko"]
+
+[ext_resource type="Script" path="res://PowerUps/Bad/LenseMalfunctionRes.gd" id="1_sak1w"]
+
+[resource]
+script = ExtResource("1_sak1w")
+name = ""
+description = ""
