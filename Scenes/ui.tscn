@@ -1,8 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://kesgjacfq2t8"]
+[gd_scene load_steps=19 format=3 uid="uid://kesgjacfq2t8"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerUi.gd" id="1_48wb0"]
 [ext_resource type="Texture2D" uid="uid://bhp8738fwnam4" path="res://Sprites/battery_no_ligtning.png" id="2_f5c34"]
 [ext_resource type="Shader" path="res://Scenes/overlay.gdshader" id="3_3my8q"]
+[ext_resource type="Texture2D" uid="uid://dmq8lg56rd2xe" path="res://Player/Sprites/screen_crack.png" id="4_6xw51"]
+[ext_resource type="PackedScene" uid="uid://8aavbtv2p64x" path="res://PowerUps/powerup_prefab.tscn" id="5_0kj32"]
 [ext_resource type="Texture2D" uid="uid://dvmhx1rcjmvn7" path="res://Sprites/square256.png" id="5_d2v4m"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_vy2gc"]
@@ -18,6 +20,29 @@ content_margin_top = 0.0
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3s151"]
 bg_color = Color(0.894118, 0.898039, 0.32549, 1)
 
+[sub_resource type="ImageTexture" id="ImageTexture_yudji"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_ixpjf"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_rv06e"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kwmy2"]
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ciwyh"]
+bg_color = Color(0.471087, 0.710938, 0.252716, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1i07e"]
+bg_color = Color(0.125911, 0.125911, 0.125911, 1)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_exbfg"]
 shader = ExtResource("3_3my8q")
 shader_parameter/fisheye_strength = 1.0
@@ -25,9 +50,14 @@ shader_parameter/rgb_mult = Vector3(1, 1, 1)
 shader_parameter/use_fisheye = false
 shader_parameter/use_crt = false
 
-[node name="UI" type="CanvasLayer" node_paths=PackedStringArray("charge_slider")]
+[node name="UI" type="CanvasLayer" node_paths=PackedStringArray("charge_slider", "overlay", "corner_crack", "level_progress_slider", "levelup_panel", "powerup_panels")]
 script = ExtResource("1_48wb0")
 charge_slider = NodePath("VSlider")
+overlay = NodePath("Overlay")
+corner_crack = NodePath("BatteryHider")
+level_progress_slider = NodePath("HSlider")
+levelup_panel = NodePath("LevelupPanel")
+powerup_panels = [NodePath("LevelupPanel/PowerupPrefab"), NodePath("LevelupPanel/PowerupPrefab2"), NodePath("LevelupPanel/PowerupPrefab3")]
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15
@@ -68,7 +98,107 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_f5c34")
 
+[node name="HSlider" type="HSlider" parent="."]
+offset_left = 378.0
+offset_top = 43.0
+offset_right = 758.0
+offset_bottom = 59.0
+theme_override_icons/grabber = SubResource("ImageTexture_yudji")
+theme_override_icons/grabber_highlight = SubResource("ImageTexture_ixpjf")
+theme_override_icons/grabber_disabled = SubResource("ImageTexture_rv06e")
+theme_override_styles/slider = SubResource("StyleBoxFlat_kwmy2")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_ciwyh")
+max_value = 60.0
+step = 0.01
+value = 21.68
+editable = false
+scrollable = false
+
+[node name="BatteryHider" type="TextureRect" parent="."]
+visible = false
+modulate = Color(0, 0, 0, 1)
+offset_left = -181.0
+offset_top = -10.0
+offset_right = 295.0
+offset_bottom = 215.0
+rotation = -0.484415
+texture = ExtResource("5_d2v4m")
+
+[node name="Crack" type="TextureRect" parent="BatteryHider"]
+layout_mode = 0
+offset_left = -338.512
+offset_top = -112.596
+offset_right = 381.488
+offset_bottom = 825.404
+rotation = -0.484415
+texture = ExtResource("4_6xw51")
+flip_h = true
+flip_v = true
+
+[node name="LevelupPanel" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="LevelupPanel"]
+layout_mode = 1
+offset_left = 416.0
+offset_top = 17.0
+offset_right = 736.0
+offset_bottom = 97.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_1i07e")
+
+[node name="Label" type="Label" parent="LevelupPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -145.0
+offset_top = 32.0
+offset_right = 145.0
+offset_bottom = 82.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 36
+text = "What to restore?"
+
+[node name="PowerupPrefab" parent="LevelupPanel" instance=ExtResource("5_0kj32")]
+layout_mode = 2
+anchors_preset = 0
+offset_left = 191.0
+offset_top = 143.0
+offset_right = 435.0
+offset_bottom = 583.0
+
+[node name="PowerupPrefab2" parent="LevelupPanel" node_paths=PackedStringArray("pos_name_label", "pos_desc_label", "neg_name_label", "neg_desc_label") instance=ExtResource("5_0kj32")]
+layout_mode = 2
+anchors_preset = 0
+offset_left = 454.0
+offset_top = 143.0
+offset_right = 698.0
+offset_bottom = 583.0
+pos_name_label = NodePath("../PowerupPrefab/PosPanel/NameLabel")
+pos_desc_label = NodePath("../PowerupPrefab/PosPanel/DescriptionLabel")
+neg_name_label = NodePath("../PowerupPrefab/NegPanel/NameLabel")
+neg_desc_label = NodePath("../PowerupPrefab/NegPanel/DescriptionLabel")
+id = 1
+
+[node name="PowerupPrefab3" parent="LevelupPanel" node_paths=PackedStringArray("pos_name_label", "pos_desc_label", "neg_name_label", "neg_desc_label") instance=ExtResource("5_0kj32")]
+layout_mode = 2
+anchors_preset = 0
+offset_left = 717.0
+offset_top = 143.0
+offset_right = 961.0
+offset_bottom = 583.0
+pos_name_label = NodePath("../PowerupPrefab/PosPanel/NameLabel")
+pos_desc_label = NodePath("../PowerupPrefab/PosPanel/DescriptionLabel")
+neg_name_label = NodePath("../PowerupPrefab/NegPanel/NameLabel")
+neg_desc_label = NodePath("../PowerupPrefab/NegPanel/DescriptionLabel")
+id = 2
+
 [node name="Overlay" type="TextureRect" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_exbfg")
 anchors_preset = 15
 anchor_right = 1.0

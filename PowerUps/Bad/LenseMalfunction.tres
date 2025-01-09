@@ -4,5 +4,6 @@
 
 [resource]
 script = ExtResource("1_sak1w")
-name = ""
-description = ""
+name = "Lense malfunction"
+description = "Add fisheye effect"
+amount_in_pool = 1

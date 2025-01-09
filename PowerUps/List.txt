@@ -41,7 +41,7 @@ Bad:
 		add nasty effect to sfx
 	Broken antenna:
 		music now is white noise/deep hum
-	Cracked screen:
+	+Cracked screen:
 		Can't see top of the battery
 	
 		

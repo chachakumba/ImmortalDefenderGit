@@ -1,0 +1,123 @@
+[gd_scene load_steps=7 format=3 uid="uid://8aavbtv2p64x"]
+
+[ext_resource type="Script" path="res://PowerUps/PowerupPrefab.gd" id="1_8r1iw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pb0mr"]
+bg_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fblqh"]
+bg_color = Color(0.760784, 0.717647, 0.423529, 1)
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_snof0"]
+bg_color = Color(0.849377, 0.810308, 0.539611, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_47xm3"]
+bg_color = Color(0.484375, 0.449948, 0.225159, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a3uep"]
+bg_color = Color(0.227005, 0.148585, 0.085629, 1)
+
+[node name="PowerupPrefab" type="Control" node_paths=PackedStringArray("pos_name_label", "pos_desc_label", "neg_name_label", "neg_desc_label")]
+custom_minimum_size = Vector2(244, 440)
+layout_mode = 3
+offset_right = 244.0
+offset_bottom = 440.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8r1iw")
+pos_name_label = NodePath("PosPanel/NameLabel")
+pos_desc_label = NodePath("PosPanel/DescriptionLabel")
+neg_name_label = NodePath("NegPanel/NameLabel")
+neg_desc_label = NodePath("NegPanel/DescriptionLabel")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_pb0mr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fblqh")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_snof0")
+
+[node name="PosPanel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 244.0
+offset_bottom = 440.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_47xm3")
+
+[node name="NameLabel" type="Label" parent="PosPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -89.0
+offset_top = 18.0
+offset_right = 89.0
+offset_bottom = 57.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 24
+text = "Name"
+horizontal_alignment = 1
+
+[node name="DescriptionLabel" type="Label" parent="PosPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -89.0
+offset_top = 60.0
+offset_right = 89.0
+offset_bottom = 198.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 20
+text = "Description"
+horizontal_alignment = 1
+
+[node name="NegPanel" type="Panel" parent="."]
+layout_mode = 0
+offset_top = 244.0
+offset_right = 244.0
+offset_bottom = 440.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_a3uep")
+
+[node name="NameLabel" type="Label" parent="NegPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -89.0
+offset_top = 18.0
+offset_right = 89.0
+offset_bottom = 57.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 24
+text = "Name"
+horizontal_alignment = 1
+
+[node name="DescriptionLabel" type="Label" parent="NegPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -89.0
+offset_top = 60.0
+offset_right = 89.0
+offset_bottom = 178.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 20
+text = "Description"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="Button" to="." method="_choose"]

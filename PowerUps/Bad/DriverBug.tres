@@ -1,8 +1,11 @@
-[gd_resource type="Resource" script_class="PwUDriverBug" load_steps=2 format=3 uid="uid://dthi8ps7faufk"]
+[gd_resource type="Resource" script_class="PwUDriverBug" load_steps=3 format=3 uid="uid://dthi8ps7faufk"]
 
 [ext_resource type="Script" path="res://PowerUps/Bad/DriverBugRes.gd" id="1_dhrsq"]
+[ext_resource type="Resource" uid="uid://g54xfjaibuko" path="res://PowerUps/Bad/LenseMalfunction.tres" id="1_hlofb"]
 
 [resource]
 script = ExtResource("1_dhrsq")
-name = ""
-description = ""
+lense_malfunction_powerup = ExtResource("1_hlofb")
+name = "Graphic driver bug"
+description = "Add crt effect"
+amount_in_pool = 1

@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource("1_e5i02")
-name = ""
-description = ""
+name = "Aim system malfunction"
+description = "Overriden"
 amount_in_pool = 1

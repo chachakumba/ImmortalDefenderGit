@@ -1,8 +1,9 @@
-[gd_scene load_steps=28 format=3 uid="uid://c0mpqwbsqvgl4"]
+[gd_scene load_steps=29 format=3 uid="uid://c0mpqwbsqvgl4"]
 
 [ext_resource type="Script" path="res://Player/Scripts/Player.gd" id="1_jv21j"]
 [ext_resource type="Texture2D" uid="uid://by7ieqw4on1kn" path="res://Player/Sprites/RobotOld.png" id="2_cn301"]
 [ext_resource type="Script" path="res://Player/Scripts/PlayerMovement.gd" id="2_g0wth"]
+[ext_resource type="Script" path="res://Player/Scripts/LevelManager.gd" id="5_3m4y5"]
 [ext_resource type="Script" path="res://Scripts/Trail2D.gd" id="6_yqbtd"]
 [ext_resource type="PackedScene" uid="uid://kesgjacfq2t8" path="res://Scenes/ui.tscn" id="7_s7uqq"]
 [ext_resource type="Script" path="res://Player/Scripts/AnimationManager.gd" id="7_tedc2"]
@@ -374,6 +375,10 @@ animPlayer = NodePath("../AnimationPlayer")
 sprite = NodePath("../Sprite2D")
 movement = NodePath("../Movement")
 looker = NodePath("../Looker")
+
+[node name="LevelUpManager" type="Node" parent="."]
+script = ExtResource("5_3m4y5")
+started = true
 
 [node name="Trail" type="Line2D" parent="."]
 show_behind_parent = true
