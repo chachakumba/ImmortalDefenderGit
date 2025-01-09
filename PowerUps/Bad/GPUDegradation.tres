@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="PwUGPUDegradation" load_steps=2 format=3 uid="uid://5rnw1bc6s4c0"]
+
+[ext_resource type="Script" path="res://PowerUps/Bad/GPUDegradationRes.gd" id="1_ap363"]
+
+[resource]
+script = ExtResource("1_ap363")
+name = "GPU degradation"
+description = ""
+amount_in_pool = 3

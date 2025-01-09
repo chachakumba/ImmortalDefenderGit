@@ -3,11 +3,12 @@ class_name PlayerMovement
 
 @export var player_root : CharacterBody2D 
 
-@export var speed = 300.0
+@export var speed : float = 300.0
 
 var move_vector : Vector2i = Vector2i.ZERO
 @export var move_delay : float = 0
 var move_multiplier : float = 1
+var attack_move_multiplier : float = 0
 
 #@export var sprite : AnimatedSprite2D
 
@@ -67,7 +68,7 @@ func _change_movement_direction(x : int = 0, y: int = 0):
 
 func _react_to_new_state(state : Player.State):
 	if state != Player.State.Idle && state != Player.State.Walk:
-		move_multiplier = 0
+		move_multiplier = attack_move_multiplier
 	else:
 		move_multiplier = 1
 

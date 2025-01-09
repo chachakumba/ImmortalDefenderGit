@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="PwUTargetNavigationModule" load_steps=2 format=3 uid="uid://c61wnupssbhq4"]
+
+[ext_resource type="Script" path="res://PowerUps/Good/TargetNavRes.gd" id="1_ol5og"]
+
+[resource]
+script = ExtResource("1_ol5og")
+name = "Target navigation module"
+description = "Unlock range attacks (RMB)"
+amount_in_pool = 1

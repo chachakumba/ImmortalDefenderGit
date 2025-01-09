@@ -6,4 +6,4 @@
 script = ExtResource("1_eha6m")
 name = "Circuit interference"
 description = "Overriden"
-amount_in_pool = 1
+amount_in_pool = 1000

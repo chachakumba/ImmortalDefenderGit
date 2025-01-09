@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="PwUOverdriveMod" load_steps=2 format=3 uid="uid://vcr3wiy1l4dj"]
+
+[ext_resource type="Script" path="res://PowerUps/Good/OverdriveModRes.gd" id="1_t2cej"]
+
+[resource]
+script = ExtResource("1_t2cej")
+name = "Overdrive mode"
+description = "unlock alt attacks (hold shift)"
+amount_in_pool = 1

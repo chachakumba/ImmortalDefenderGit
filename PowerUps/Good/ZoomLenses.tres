@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PwUZoomLenses" load_steps=2 format=3 uid="uid://6gweyw1jwgwt"]
+
+[ext_resource type="Script" path="res://PowerUps/Good/ZoomLensesRes.gd" id="1_tt1ei"]
+
+[resource]
+script = ExtResource("1_tt1ei")
+amount = 0.15
+name = "Zoom lenses"
+description = "Increase view distance"
+amount_in_pool = 3

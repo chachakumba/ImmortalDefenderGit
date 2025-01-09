@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dct46k8r1tfng"]
+[gd_scene load_steps=14 format=3 uid="uid://dct46k8r1tfng"]
 
 [ext_resource type="PackedScene" uid="uid://c0mpqwbsqvgl4" path="res://Player/player.tscn" id="1_d84an"]
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_wmo62"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://bnxrh8moml6fr" path="res://Enemies/Scenes/enemy_mele.tscn" id="4_lb2hu"]
 [ext_resource type="PackedScene" uid="uid://dlvo7f47l6hem" path="res://Enemies/Scenes/enemy_ranged.tscn" id="5_tfmsk"]
 [ext_resource type="Script" path="res://Scripts/MusicManager.gd" id="6_7vn68"]
-[ext_resource type="AudioStream" uid="uid://cdocpm8g6i7hu" path="res://Music/ElecAmbient Creep Intensity 2.wav" id="7_g4uux"]
 [ext_resource type="Script" path="res://Scripts/MusicResource.gd" id="8_fi0d3"]
 [ext_resource type="AudioStream" uid="uid://ceypndgaabl8c" path="res://Music/Industrial Tech Savvy Intensity 1.wav" id="9_q6b3r"]
 [ext_resource type="AudioStream" uid="uid://bec86wj1pvvdy" path="res://Music/Industrial Tech Savvy Intensity 2.wav" id="10_yvdh4"]
@@ -49,7 +48,6 @@ projectiles_parent = NodePath("Projectiles")
 [node name="MusicManager" type="Node2D" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("6_7vn68")
 player = NodePath("AudioStreamPlayer")
-main_menu_track = ExtResource("7_g4uux")
 music = Array[ExtResource("8_fi0d3")]([SubResource("Resource_jjesl")])
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="MusicManager"]

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PwURecalibratedServimotors" load_steps=2 format=3 uid="uid://bw6d0nwtds00h"]
+
+[ext_resource type="Script" path="res://PowerUps/Good/RecalibratedServimotorsRes.gd" id="1_7y7yn"]
+
+[resource]
+script = ExtResource("1_7y7yn")
+amount = 50.0
+name = "Recalibrated servimotors"
+description = "Speed increase"
+amount_in_pool = 4

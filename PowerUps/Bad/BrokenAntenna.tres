@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="PwUBrokenAntenna" load_steps=2 format=3 uid="uid://cswtoicojb3lk"]
+
+[ext_resource type="Script" path="res://PowerUps/Bad/BrokenAntennaRes.gd" id="1_471x3"]
+
+[resource]
+script = ExtResource("1_471x3")
+name = "Broken antenna"
+description = "music now is white noise"
+amount_in_pool = 1

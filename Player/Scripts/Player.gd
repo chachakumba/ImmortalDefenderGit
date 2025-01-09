@@ -17,6 +17,10 @@ signal chosen_powerup() # to unfreeze enemies after level up
 
 @export var movement : PlayerMovement
 @export var looker : Looker
+@export var camera : Camera2D
+
+var can_alt_attack : bool = false
+var can_shoot : bool = false
 
 func _init():
 	Instance = self

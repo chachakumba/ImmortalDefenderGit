@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_4ekig")
-amount = 0.25
+amount = 0.5
 name = "Old wiring"
 description = "Add input delay"
-amount_in_pool = 1
+amount_in_pool = 4

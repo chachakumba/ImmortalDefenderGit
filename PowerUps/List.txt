@@ -1,23 +1,23 @@
 
 Good: "What to restore"
-	Target navigation module:
+	+Target navigation module:
 		unlock range attacks
-	Overdrive mode:
+	+Overdrive mode:
 		unlock alt attacks (hold shift)
 	Rebalanced hydraulic:
 		Attack increase (1.5 times enemy hp increase)
-	Fixed capacitators:
+	+Fixed capacitators:
 		Max energy increase
-	Recalibrated servimotors:
+	+Recalibrated servimotors:
 		Speed increase
 	Navigation module:
 		Walk througth enemies
-	Multitasking chip:
+	+Multitasking chip:
 		attacking won't freeze movement/
 		attacking won't slow movement
 	Repower swords:
 		Increase mele range
-	Zoom lenses:
+	+Zoom lenses:
 		Increase view distance
 	
 		
@@ -32,14 +32,14 @@ Bad:
 		add input delay
 	+Aim system malfunction:
 		invert [x or y] aim axis
-	GPU degradation:
+	+GPU degradation:
 		remove [red, green or blue] colors/
 		remove all colors
 	+Circuit interference:
 		invert [x or y] move axis
 	Audio corruption:
 		add nasty effect to sfx
-	Broken antenna:
+	+Broken antenna:
 		music now is white noise/deep hum
 	+Cracked screen:
 		Can't see top of the battery

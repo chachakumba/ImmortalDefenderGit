@@ -9,7 +9,7 @@ static var Instance : PlayerUI
 
 @export var levelup_panel : Control
 @export var powerup_panels : Array[PowerupPrefab]
-
+var rgbOverlay : Vector3 = Vector3.ONE
 func _init():
 	Instance = self
 
@@ -24,5 +24,8 @@ func _set_crt_effect(state : bool):
 	overlay.material.set_shader_parameter("use_crt", state)
 func _set_fisheye_effect(state : bool):
 	overlay.material.set_shader_parameter("use_fisheye", state)
+func _subtract_rgb(vec3 : Vector3):
+	rgbOverlay -= vec3
+	_set_rgb(rgbOverlay)
 func _set_rgb(vec3 : Vector3):
 	overlay.material.set_shader_parameter("rgb_mult", vec3)

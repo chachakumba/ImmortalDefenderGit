@@ -6,4 +6,4 @@
 script = ExtResource("1_e5i02")
 name = "Aim system malfunction"
 description = "Overriden"
-amount_in_pool = 1
+amount_in_pool = 1000
