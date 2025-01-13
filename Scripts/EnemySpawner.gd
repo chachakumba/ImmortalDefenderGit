@@ -19,9 +19,19 @@ Vector2(650,175),Vector2(-650,175),Vector2(650,-175),Vector2(-650,-175),
 var time_to_spawn : float = 0
 @export var spawn_delay : float = 3
 @export var spawn_radius : float = 10 #not actually radius, but x and/or y distance from player
+var paused : bool = false
+
+func _ready() -> void:
+	Player.Instance.on_level_up.connect(_pause)
+	Player.Instance.on_chosen_powerup.connect(_unpause)
+
+func _pause():
+	paused = true
+func _unpause():
+	paused = true
 
 func _process(delta):
-	if !is_running:
+	if !is_running || paused:
 		return
 	
 	time_to_spawn -= delta
@@ -33,4 +43,5 @@ func _spawn():
 	var spawned_enemy : Enemy = enemies_prefabs.pick_random().instantiate()
 	enemies_parent.add_child(spawned_enemy)
 	spawned_enemy.spawner = self
+	spawned_enemy._set_level(LevelManager.Instance.level)
 	spawned_enemy.global_position = player.global_position + spawnpoints.pick_random()

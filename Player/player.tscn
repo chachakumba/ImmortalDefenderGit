@@ -1,14 +1,28 @@
-[gd_scene load_steps=29 format=3 uid="uid://c0mpqwbsqvgl4"]
+[gd_scene load_steps=43 format=3 uid="uid://c0mpqwbsqvgl4"]
 
 [ext_resource type="Script" path="res://Player/Scripts/Player.gd" id="1_jv21j"]
 [ext_resource type="Texture2D" uid="uid://by7ieqw4on1kn" path="res://Player/Sprites/RobotOld.png" id="2_cn301"]
 [ext_resource type="Script" path="res://Player/Scripts/PlayerMovement.gd" id="2_g0wth"]
 [ext_resource type="Script" path="res://Player/Scripts/LevelManager.gd" id="5_3m4y5"]
+[ext_resource type="Script" path="res://Player/Scripts/AttackManager.gd" id="6_okojv"]
+[ext_resource type="Resource" uid="uid://beuprek2bs18h" path="res://PowerUps/Good/FixedCapacitators.tres" id="6_rl51u"]
 [ext_resource type="Script" path="res://Scripts/Trail2D.gd" id="6_yqbtd"]
+[ext_resource type="Resource" uid="uid://bccd6m1jbd4qq" path="res://PowerUps/Good/MultitaskingChip.tres" id="7_p04ws"]
 [ext_resource type="PackedScene" uid="uid://kesgjacfq2t8" path="res://Scenes/ui.tscn" id="7_s7uqq"]
 [ext_resource type="Script" path="res://Player/Scripts/AnimationManager.gd" id="7_tedc2"]
+[ext_resource type="Resource" uid="uid://vcr3wiy1l4dj" path="res://PowerUps/Good/OverdriveMod.tres" id="8_7f70q"]
 [ext_resource type="Script" path="res://Player/Scripts/Looker.gd" id="8_pan1e"]
 [ext_resource type="Texture2D" uid="uid://dvmhx1rcjmvn7" path="res://Sprites/square256.png" id="9_8rjqu"]
+[ext_resource type="Resource" uid="uid://bw6d0nwtds00h" path="res://PowerUps/Good/RecalibratedServimotors.tres" id="9_ibqqh"]
+[ext_resource type="Resource" uid="uid://c61wnupssbhq4" path="res://PowerUps/Good/TargetNav.tres" id="10_jb5fx"]
+[ext_resource type="Resource" uid="uid://6gweyw1jwgwt" path="res://PowerUps/Good/ZoomLenses.tres" id="11_5l7ts"]
+[ext_resource type="Resource" uid="uid://5aol68ty25g7" path="res://PowerUps/Bad/AimSysMalfunction.tres" id="12_r0nt4"]
+[ext_resource type="Resource" uid="uid://cswtoicojb3lk" path="res://PowerUps/Bad/BrokenAntenna.tres" id="13_nkxga"]
+[ext_resource type="Resource" uid="uid://ss85aokndeub" path="res://PowerUps/Bad/CircuitInterfierence.tres" id="14_f1bsq"]
+[ext_resource type="Resource" uid="uid://cp1eeu3p1bmks" path="res://PowerUps/Bad/CrackedScreen.tres" id="15_8eqa0"]
+[ext_resource type="Resource" uid="uid://dthi8ps7faufk" path="res://PowerUps/Bad/DriverBug.tres" id="16_ey6bp"]
+[ext_resource type="Resource" uid="uid://5rnw1bc6s4c0" path="res://PowerUps/Bad/GPUDegradation.tres" id="17_kyiby"]
+[ext_resource type="Resource" uid="uid://bd8o0qgdj2uvv" path="res://PowerUps/Bad/OldWiring.tres" id="18_k1vr0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qxq4n"]
 radius = 16.0
@@ -319,12 +333,14 @@ point_count = 2
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t26u1"]
 size = Vector2(104, 47)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("ui", "movement")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("ui", "movement", "looker", "camera")]
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_jv21j")
 ui = NodePath("UI")
 movement = NodePath("Movement")
+looker = NodePath("Looker")
+camera = NodePath("Camera2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_qxq4n")
@@ -379,6 +395,12 @@ looker = NodePath("../Looker")
 [node name="LevelUpManager" type="Node" parent="."]
 script = ExtResource("5_3m4y5")
 started = true
+pos_powerup_pool = Array[Resource("res://PowerUps/PowerupResource.gd")]([ExtResource("6_rl51u"), ExtResource("7_p04ws"), ExtResource("8_7f70q"), ExtResource("9_ibqqh"), ExtResource("10_jb5fx"), ExtResource("11_5l7ts")])
+neg_powerup_pool = Array[Resource("res://PowerUps/PowerupResource.gd")]([ExtResource("12_r0nt4"), ExtResource("13_nkxga"), ExtResource("14_f1bsq"), ExtResource("15_8eqa0"), ExtResource("16_ey6bp"), ExtResource("17_kyiby"), ExtResource("18_k1vr0")])
+exp_speed_mult = 10.0
+
+[node name="AttackManager" type="Node" parent="."]
+script = ExtResource("6_okojv")
 
 [node name="Trail" type="Line2D" parent="."]
 show_behind_parent = true
@@ -423,7 +445,6 @@ visible = false
 position = Vector2(39, 0)
 collision_layer = 0
 collision_mask = 36
-monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Looker/AttackStrong"]
 position = Vector2(32, 0)

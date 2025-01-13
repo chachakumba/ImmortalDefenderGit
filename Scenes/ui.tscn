@@ -136,6 +136,7 @@ flip_h = true
 flip_v = true
 
 [node name="LevelupPanel" type="Panel" parent="."]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -148,6 +149,7 @@ offset_left = 416.0
 offset_top = 17.0
 offset_right = 736.0
 offset_bottom = 97.0
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_1i07e")
 
 [node name="Label" type="Label" parent="LevelupPanel"]
@@ -165,7 +167,6 @@ text = "What to restore?"
 
 [node name="PowerupPrefab" parent="LevelupPanel" instance=ExtResource("5_0kj32")]
 layout_mode = 2
-anchors_preset = 0
 offset_left = 191.0
 offset_top = 143.0
 offset_right = 435.0
@@ -173,7 +174,6 @@ offset_bottom = 583.0
 
 [node name="PowerupPrefab2" parent="LevelupPanel" node_paths=PackedStringArray("pos_name_label", "pos_desc_label", "neg_name_label", "neg_desc_label") instance=ExtResource("5_0kj32")]
 layout_mode = 2
-anchors_preset = 0
 offset_left = 454.0
 offset_top = 143.0
 offset_right = 698.0
@@ -186,7 +186,6 @@ id = 1
 
 [node name="PowerupPrefab3" parent="LevelupPanel" node_paths=PackedStringArray("pos_name_label", "pos_desc_label", "neg_name_label", "neg_desc_label") instance=ExtResource("5_0kj32")]
 layout_mode = 2
-anchors_preset = 0
 offset_left = 717.0
 offset_top = 143.0
 offset_right = 961.0
@@ -198,11 +197,11 @@ neg_desc_label = NodePath("../PowerupPrefab/NegPanel/DescriptionLabel")
 id = 2
 
 [node name="Overlay" type="TextureRect" parent="."]
-visible = false
 material = SubResource("ShaderMaterial_exbfg")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("5_d2v4m")

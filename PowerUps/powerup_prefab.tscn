@@ -28,6 +28,7 @@ bg_color = Color(0.227005, 0.148585, 0.085629, 1)
 [node name="PowerupPrefab" type="Control" node_paths=PackedStringArray("pos_name_label", "pos_desc_label", "neg_name_label", "neg_desc_label")]
 custom_minimum_size = Vector2(244, 440)
 layout_mode = 3
+anchors_preset = 0
 offset_right = 244.0
 offset_bottom = 440.0
 grow_horizontal = 2

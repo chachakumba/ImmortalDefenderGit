@@ -15,6 +15,7 @@ func _bind_pos(positive_powerup : Powerup):
 	pos_powerup = positive_powerup
 	pos_name_label.text = pos_powerup._get_name()
 	pos_desc_label.text = pos_powerup._get_description()
+	pos_name_label.text = "Id" + str(id)
 
 func _bind_neg(negative_powerup : Powerup):
 	neg_powerup = negative_powerup

@@ -12,15 +12,12 @@ static var Instance : Player
 
 var state : State
 signal on_state_change(new_state : State)
-signal level_up(level : int)
-signal chosen_powerup() # to unfreeze enemies after level up
+signal on_level_up(level : int)
+signal on_chosen_powerup() # to unfreeze enemies after level up
 
 @export var movement : PlayerMovement
 @export var looker : Looker
 @export var camera : Camera2D
-
-var can_alt_attack : bool = false
-var can_shoot : bool = false
 
 func _init():
 	Instance = self

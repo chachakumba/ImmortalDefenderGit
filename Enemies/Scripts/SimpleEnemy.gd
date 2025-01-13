@@ -2,7 +2,7 @@ extends Enemy
 class_name SimpleEnemy
 
 @export var speed : float = 100.0
-@export var speed_refresh : float = 30.0
+@export var speed_refresh : float = 5.0
 var current_speed : float
 
 @export var attack_radius : float
@@ -13,11 +13,21 @@ var cooldown : float = 0
 var stun : float = 0
 
 @export var sprite : Node2D
+var paused : bool = false
 
 func _init():
 	on_damage.connect(_slow_down)
+	Player.Instance.on_level_up.connect(_pause)
+	Player.Instance.on_chosen_powerup.connect(_unpause)
+
+func _pause():
+	paused = true
+func _unpause():
+	paused = true
 
 func _physics_process(delta):
+	if paused:
+		return
 	current_speed = clampf(current_speed + speed_refresh, 0, speed)
 	if stun > 0:
 		stun -= delta
@@ -45,3 +55,8 @@ func _slow_down():
 
 func _attack():
 	printerr("Not overriden simple enemy attack")
+
+func _set_level(level : int):
+	health += health/10*level
+	damage += damage/10*level
+	speed += speed/25*level

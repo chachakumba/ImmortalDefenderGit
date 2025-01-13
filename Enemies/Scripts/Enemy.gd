@@ -26,3 +26,7 @@ func _die():
 	spawner.batteries_parent.add_child(battery)
 	battery.global_position = global_position
 	queue_free()
+
+func _set_level(level : int):
+	health += health/10*level
+	damage += damage/10*level

@@ -5,4 +5,4 @@ class_name PwUDriverBug
 
 func _activate():
 	PlayerUI.Instance._set_crt_effect(true)
-	Player.Instance._add_neg_powerup(lense_malfunction_powerup)
+	LevelManager.Instance._add_neg_powerup(lense_malfunction_powerup)

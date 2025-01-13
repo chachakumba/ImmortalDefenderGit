@@ -2,4 +2,4 @@ extends Powerup
 class_name PwUOverdriveMod
 
 func _activate():
-	Player.Instance.can_alt_attack = true
+	AttackManager.Instance.can_alt_attack = true
